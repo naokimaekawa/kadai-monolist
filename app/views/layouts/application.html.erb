@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Monolist</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <!-- app/assets/stylesheets -->
+    <%# app/assets/stylesheets/application.css にコーディングされた CSS が読み込まれる設定%>
+    <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <!-- app/assets/javascripts-->
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Bootstrap JavaScript-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
   <body>
-    <%= yield %>
+    <%# toppages.index.html参考%>
+    <%= render 'layouts/navbar' %>
+
+    <%#呼び出す側の View (app/views/toppages/index.html.erb 等) で%>
+    <%#content_for :cover で定義され、その内容がその位置に埋め込まれるというだけ%>
+    <%= yield :cover %>
+
+    <div class="container">
+      <%= render 'layouts/flash_messages' %>
+
+      <%= yield %>
+    </div>
+
+    <%= render 'layouts/footer' %>
   </body>
 </html>
