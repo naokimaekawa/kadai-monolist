@@ -1,0 +1,27 @@
+<% if current_user.want?(item) %>
+
+  <%# すでにwantしている場合から記述%>
+  
+  <%# items_controller.rbで記述したように、すでにfind_byでitem.idがあるため%>
+  
+  <%= form_tag(ownership_path(item.id), method: :delete) do %>
+    
+    <%= hidden_field_tag :item_id, item.id %>
+    <%= hidden_field_tag :type, 'Want' %>
+    <%= submit_tag 'Unwant', class: 'btn btn-success' %>
+  
+  <% end %>
+  
+<% else %>
+  
+  <%= form_tag(ownerships_path) do %>
+    
+    <%# items_controller.rbで記述したように、item.idがない場合を考え、item_codeになっている%>
+    
+    <%= hidden_field_tag :item_code, item.code %>
+    <%= hidden_field_tag :type, 'Want' %>
+    <%= submit_tag 'Want it', class: 'btn btn-primary' %>
+  
+  <% end %>
+  
+<% end %>

@@ -3,6 +3,13 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    
+    #ユーザー詳細ページでも表示
+    #Want も Have もした場合に、商品がどちらにも一つずつ（結果、重複した商品が2つ）取得するところを、
+    #重複した商品は .uniq とすれば、重複を防いで取得可能
+    @items = @user.items.uniq
+    @count_want = @user.want_items.count
+    
   end
 
   def new
