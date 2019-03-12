@@ -17,12 +17,15 @@
                 <p class="item-title"><%= item.name %></p>
               <% end %>
               
-              <%#Wantボタンの作成%>
+              <%#WantとHaveボタンの作成%>
               <div class="buttons text-center">
                 
                 <%#ログイン条件の追加%>
                 <% if logged_in? %>
+                
                   <%= render 'ownerships/want_button', item: item %>
+                  <%= render 'ownerships/have_button', item: item %>
+                  
                 <% end %>
               
               </div>

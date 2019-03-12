@@ -4,7 +4,11 @@ class ItemsController < ApplicationController
   #item配下でWantしたユーザーを表示するため
   def show
     @item = Item.find(params[:id])
+    
+    #それぞれitem.rbで定義したwant_usersとhave_usersを利用
     @want_users = @item.want_users
+    @have_users = @item.have_users
+    
   end
   
   

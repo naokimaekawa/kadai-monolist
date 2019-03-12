@@ -38,4 +38,23 @@ class User < ApplicationRecord
     self.want_items.include?(item)
   end
   
+  #Item Model に has_many :wants と書くと、自動的に Want クラスだと判断されるが、 
+  #has_many :haves と書くと Hafe クラスと判断されてしまうので、class_name: 'Have'と明示する
+  has_many :haves, class_name: 'Have'
+  has_many :have_items, through: :haves, source: :item
+  
+  def have(item)
+    self.haves.find_or_create_by(item_id: item.id)
+  end
+
+  def nothave(item)
+    have = self.haves.find_by(item_id: item.id)
+    have.destroy if have
+  end
+
+  def have?(item)
+    self.have_items.include?(item)
+  end
+  
+  
 end

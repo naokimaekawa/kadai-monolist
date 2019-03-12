@@ -11,9 +11,10 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  ##ownerships_controllerで使用するため。item_controllerから移動
-　##もともとitems_controllerではprivateで定義していたが、外す
-　#resultで受け取ったもののうち、必要な値をresultで読み出し、code,name,url,image_urlにハッシュとして入れる
+  #ownerships_controllerで使用するため。item_controllerから移動
+  #もともとitems_controllerではprivateで定義していたが、外す
+#resultで受け取ったもののうち、必要な値をresultで読み出し、code,name,url,image_urlにハッシュとして入れる
+
   def read(result)
     code = result['itemCode']
     name = result['itemName']

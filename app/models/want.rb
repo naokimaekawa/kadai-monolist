@@ -1,5 +1,6 @@
 class Want < Ownership
   
+  #STI
   #モデルの継承関係で表現されるものに関して、Rails は標準機能を提供しています。
   #それは、Want というクラス名であるが wants テーブルを探さず、
   #継承元 (Ownership) の保存先テーブル (ownerships) を自分のテーブルとして認識し、
